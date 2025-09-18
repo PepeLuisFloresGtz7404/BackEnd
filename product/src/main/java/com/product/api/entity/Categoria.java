@@ -1,17 +1,26 @@
-package com.product;
+package com.product.api.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "categoria")
 public class Categoria{
 
+    @Id
     int categoria_id;
     String categoria;
     String tag;
-    int status;
+    int estatus;
+    
+    public Categoria(){}
 
-    public Categoria(int categoria_id, String categoria, String tag, int status){
+    public Categoria(int categoria_id, String categoria, String tag, int estatus){
         this.categoria_id = categoria_id;
         this.categoria = categoria;
         this.tag = tag;
-        this.status = status;
+        this.estatus = estatus;
     }
 
     public void setCategoria_id(int categoria_id){
@@ -27,7 +36,7 @@ public class Categoria{
     }
 
     public void setStatus(int status){
-        this.status = status;
+        this.estatus = status;
     }
 
     public int getCategoria_id(){
@@ -43,10 +52,10 @@ public class Categoria{
     }
 
     public int getStatus(){
-        return status;
+        return estatus;
     }
 
     public String toString(){
-        return "- Categoría ID: " + categoria_id + "\n- Categoría: " + categoria + "\n- Tag: " + tag + "\n- Status: " + status;
+        return "- Categoría ID: " + categoria_id + "\n- Categoría: " + categoria + "\n- Tag: " + tag + "\n- Status: " + estatus;
     }
 }
