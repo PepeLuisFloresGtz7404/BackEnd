@@ -1,34 +1,52 @@
 package com.product.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categoria")
+@Table(name = "category")
 public class Categoria{
 
     @Id
-    int categoria_id;
-    String categoria;
-    String tag;
-    int estatus;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty("category_id")
+	@Column(name = "category_id")
+	private int category_id;
+	
+	@JsonProperty("category")
+	@Column(name = "category")
+	private String category;
+	
+	@JsonProperty("tag")
+	@Column(name = "tag")
+	private String tag;
+	
+	@JsonProperty("status")
+	@Column(name = "status")
+	private int status;
+	
     
     public Categoria(){}
 
-    public Categoria(int categoria_id, String categoria, String tag, int estatus){
-        this.categoria_id = categoria_id;
-        this.categoria = categoria;
+    public Categoria(int category_id, String category, String tag, int status){
+        this.category_id = category_id;
+        this.category = category;
         this.tag = tag;
-        this.estatus = estatus;
+        this.status = status;
     }
 
-    public void setCategoria_id(int categoria_id){
-        this.categoria_id = categoria_id;
+    public void setCategoria_id(int category_id){
+        this.category_id = category_id;
     }
 
-    public void setCategoria(String categoria){
-        this.categoria = categoria;
+    public void setCategoria(String category){
+        this.category = category;
     }
 
     public void setTag(String tag){
@@ -36,15 +54,15 @@ public class Categoria{
     }
 
     public void setStatus(int status){
-        this.estatus = status;
+        this.status = status;
     }
 
     public int getCategoria_id(){
-        return categoria_id;
+        return category_id;
     }
 
     public String getCategoria(){
-        return categoria;
+        return category;
     }
 
     public String getTag(){
@@ -52,10 +70,10 @@ public class Categoria{
     }
 
     public int getStatus(){
-        return estatus;
+        return status;
     }
 
     public String toString(){
-        return "- Categoría ID: " + categoria_id + "\n- Categoría: " + categoria + "\n- Tag: " + tag + "\n- Status: " + estatus;
+        return "- Category ID: " + category_id + "\n- Category: " + category + "\n- Tag: " + tag + "\n- Status: " + status;
     }
 }
